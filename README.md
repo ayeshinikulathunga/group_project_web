@@ -1,1 +1,1 @@
-# group_project_web
+Donation platform for the group project
