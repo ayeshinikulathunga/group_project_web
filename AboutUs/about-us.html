@@ -61,7 +61,8 @@
     <img src="images/gallery2.jpg" alt="Hopefull Banner" class="banner">
 </div>
     <div class="about-us">
-        <h1>About Us</h1>
+        <h1>About Us </h1> 
+        
         <p>At Hopefull, we believe in the power of giving and the potential to create a better world by connecting those in need with those willing to help. Our platform is a bridge between generous donors and communities or individuals facing difficult times, making it easier for everyone to make a difference. <br/><br/><br/><br/>
 
             Whether you want to support healthcare initiatives, educational projects, or community efforts, Hopefull provides a safe and trusted space to do so. With a user-friendly interface and transparent donation process, we empower people to launch campaigns, contribute to worthy causes, and bring hope to lives across Sri Lanka. <br/><br/><br/><br/>
@@ -69,6 +70,11 @@
             Join us in making a lasting impact, because every act of kindness counts.</p>
     </div>
 </div>
+
+<div class="line1"></div>
+<div class="line2"></div>
+<div class="line3"></div>
+
 <div class="container1">
 <div class = "vision">
     <h1>Our Vision</h1> <br/>
@@ -85,7 +91,110 @@
         <img src="images/mission.png" alt="Hopefull Banner" class="banner">     
     </div>
     </div>
-</br></br></br></br></br></br></br></br></br></br></br></br></br></br></br><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/><br><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    <section id="faq">
+        <h2>Frequently Asked Questions (FAQs)</h2>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(this)">
+                <h3>What is Hopefull?</h3>
+                <span class="arrow"></span>
+            </div>
+            <div class="faq-answer">
+                <p>Hopefull is a donation platform designed to connect donors with causes that matter, enabling users to make a positive impact in their communities.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(this)">
+                <h3>How can I donate?</h3>
+                <span class="arrow"></span>
+            </div>
+            <div class="faq-answer" onclick="toggleAnswer(this)">
+                <p>You can donate through our website by selecting a campaign and following the prompts to complete your donation securely.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(this)">
+                <h3>Can I start my own campaign?</h3>
+                <span class="arrow"></span>
+            </div>
+            <div class="faq-answer">
+                <p>Yes! Simply sign up and follow the instructions to get started. Your campaign will be posted in the website after the authentication.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(this)">
+                <h3>What types of causes can I donate to?</h3>
+                <span class="arrow"></span>
+            </div>
+            <div class="faq-answer">
+                <p>You can donate to various causes including healthcare, education, community development, and disaster relief.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(this)">
+                <h3>Is there a minimum donation amount?</h3>
+                <span class="arrow"></span>
+            </div>
+            <div class="faq-answer">
+                <p>No, we welcome donations of any size. Every contribution makes a difference.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(this)">
+                <h3>How do I track my donations?</h3>
+                <span class="arrow"></span>
+            </div>
+            <div class="faq-answer">
+                <p>You can track your donations through your account dashboard, where you can see your donation history and the impact of your contributions.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(this)">
+                <h3>What payment methods are accepted?</h3>
+                <span class="arrow"></span>
+            </div>
+            <div class="faq-answer">
+                <p>We accept various payment methods, including credit/debit cards and bank transfers.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(this)">
+                <h3>How can I get involved beyond donating?</h3>
+                <span class="arrow"></span>
+            </div>
+            <div class="faq-answer">
+                <p>You can volunteer your time, promote campaigns on social media, or help create awareness about causes that matter to you.
+                </p>
+            </div>
+        </div>
+        
+
+
+
+    </section>
+
+    <script>
+        function toggleAnswer(question) {
+    const answer = question.nextElementSibling;
+    const arrow = question.querySelector('.arrow');
+
+    if (answer.classList.contains('show')) {
+        answer.classList.remove('show');
+        arrow.classList.remove('down');
+    } else {
+        answer.classList.add('show');
+        arrow.classList.add('down');
+    }
+}
+
+
+        
+    </script>
+   
+  
+</br><br/><br/><br/><br/><br/>
 
 
     <footer>
