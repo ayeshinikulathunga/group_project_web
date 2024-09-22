@@ -22,8 +22,8 @@ body {
 } 
 
 .container img {
-    padding-top: 200px;
-    padding-left: 30px;
+    padding-top: 185px;
+    padding-left: 40px;
     height: 300px; 
     width: auto; 
 }
@@ -141,6 +141,86 @@ body {
     left:120px; 
     width: 150px; 
     height: auto; 
+}
+
+#faq {
+    
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}
+
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.faq-answer {
+    color: #701547;
+    display: none;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.4s ease-out, opacity 0.4s ease-out;
+    opacity: 0;
+}
+
+.faq-answer.show {
+    display: block;
+    max-height: 500px; /* Set a reasonable max-height */
+    opacity: 1;
+}
+h2{
+    color: #701547;
+    font-size: 40px;
+    text-align: center;
+}
+.arrow {
+   
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid black; /* Creates the upward arrow */
+    margin-left: 10px;
+    margin-top: 25px;
+    transition: transform 0.3s ease;
+}
+
+.arrow.down {
+    transform: rotate(-180deg);
+}
+
+.line1 {
+    position: absolute;
+    width: 555px; /* Line length */
+    height: 0.5px;  /* Line thickness */
+    background-color: rgb(126, 119, 119); /* Line color */
+    top: 240px; /* Position from the top of the page */
+    left: 580px; /* Position from the left of the page */
+}
+
+.line2 {
+    position: absolute;
+    width: 505px; /* Line length */
+    height: 0.5px;  /* Line thickness */
+    background-color: rgb(126, 119, 119); /* Line color */
+    top: 730px; /* Position from the top of the page */
+    left: 60px; /* Position from the left of the page */
+}
+
+.line3 {
+    position: absolute;
+    width: 585px; /* Line length */
+    height: 0.5px;  /* Line thickness */
+    background-color: rgb(126, 119, 119); /* Line color */
+    top: 1000px; /* Position from the top of the page */
+    left: 600px; /* Position from the left of the page */
 }
 
 .navbar {
