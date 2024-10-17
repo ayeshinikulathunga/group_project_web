@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hopefull - Donation Platform</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Linking the CSS file -->
+</head>
+<body>
+    <header>
+        <div class="logo"><img src="images/logo.png" alt="Hopefull Logo"><br/></div>
+        <div class="logotext">Admin Dashboard</div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search..." id="search" onkeyup="filterUsers()">
+        </div>
+        <div class="profile-menu">
+            <span onclick="toggleDropdown()">Account</span>
+            <div class="dropdown" id="dropdown-menu">
+                <a href="#">Profile</a>
+                <a href="#">Settings</a>
+                <a href="#">Logout</a>
+            </div>
+        </div>
+        
+    </header>
+    <div class="container">
+        <aside class="sidebar">
+            <ul>
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">Users</a></li>
+                <li><a href="#">Donations</a></li>
+                <li><a href="#">Campaigns</a></li>
+                <li><a href="#">Marketplace</a></li>
+                <li><a href="#">Reports</a></li>
+                <li><a href="#">Settings</a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <section class="overview">
+                <div class="card">
+                    <h3>Total Donations</h3>
+                    <p id="donations-count">1200</p>
+                </div>
+                <div class="card">
+                    <h3>Total Users</h3>
+                    <p id="users-count">850</p>
+                </div>
+                <div class="card">
+                    <h3>Active Campaigns</h3>
+                    <p id="campaigns-count">50</p>
+                </div>
+                <div class="card">
+                    <h3>Pending Approvals</h3>
+                    <p id="approvals-count">7</p>
+                </div>
+            </section>
+
+            <section class="user-management">
+                <br/>
+                <h2>User Management</h2>
+                <br/><br/>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>User</th>
+                            <th>Role</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="user-table">
+                        <tr>
+                            <td>John Doe</td>
+                            <td>Donor</td>
+                            <td>Active</td>
+                            <td><button onclick="suspendUser(this)">Suspend</button></td>
+                        </tr>
+                        <tr>
+                            <td>Jane Smith</td>
+                            <td>Recipient</td>
+                            <td>Pending</td>
+                            <td><button onclick="approveUser(this)">Approve</button> <button onclick="rejectUser(this)">Reject</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+
+    <!-- JavaScript section -->
+    <script>
+        // Dropdown menu toggle
+        function toggleDropdown() {
+            const dropdown = document.getElementById('dropdown-menu');
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // User management actions
+        function suspendUser(button) {
+            const row = button.closest('tr');
+            row.querySelector('td:nth-child(3)').innerText = 'Suspended';
+            button.innerText = 'Activate';
+            button.setAttribute('onclick', 'activateUser(this)');
+        }
+
+        function activateUser(button) {
+            const row = button.closest('tr');
+            row.querySelector('td:nth-child(3)').innerText = 'Active';
+            button.innerText = 'Suspend';
+            button.setAttribute('onclick', 'suspendUser(this)');
+        }
+
+        function approveUser(button) {
+            const row = button.closest('tr');
+            row.querySelector('td:nth-child(3)').innerText = 'Active';
+            button.remove();
+        }
+
+        function rejectUser(button) {
+            const row = button.closest('tr');
+            row.remove();
+        }
+
+        // Filter users based on search input
+        function filterUsers() {
+            const input = document.getElementById('search').value.toLowerCase();
+            const rows = document.getElementById('user-table').getElementsByTagName('tr');
+
+            for (let i = 0; i < rows.length; i++) {
+                const row = rows[i];
+                const userName = row.getElementsByTagName('td')[0].innerText.toLowerCase();
+                if (userName.indexOf(input) > -1) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            }
+        }
+
+        // Dynamic update of stats
+        function updateStats() {
+            document.getElementById('donations-count').innerText = 1250; // Sample update
+            document.getElementById('users-count').innerText = 900;
+            document.getElementById('campaigns-count').innerText = 55;
+            document.getElementById('approvals-count').innerText = 5;
+        }
+
+        // Simulate updating stats after loading the page
+        setTimeout(updateStats, 2000); // Updates stats after 2 seconds for demonstration
+    </script>
+
+    <!-- Footer section -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="images/logo.png" alt="Hopefull Logo">
+            </div>
+            <p>&copy; 2024 Hopefull. All rights reserved.</p>
+        </div>
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms and Conditions</a>
+            <a href="#">Contact us</a>
+        </div>
+        <div class="social-media">
+            <a href="#facebook"><svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24" width="32px" height="32px">    <path d="M 5 3 C 3.897 3 3 3.897 3 5 L 3 19 C 3 20.103 3.897 21 5 21 L 11.621094 21 L 14.414062 21 L 19 21 C 20.103 21 21 20.103 21 19 L 21 5 C 21 3.897 20.103 3 19 3 L 5 3 z M 5 5 L 19 5 L 19.001953 19 L 14.414062 19 L 14.414062 15.035156 L 16.779297 15.035156 L 17.130859 12.310547 L 14.429688 12.310547 L 14.429688 10.574219 C 14.429687 9.7862188 14.649297 9.2539062 15.779297 9.2539062 L 17.207031 9.2539062 L 17.207031 6.8222656 C 16.512031 6.7512656 15.814234 6.71675 15.115234 6.71875 C 13.041234 6.71875 11.621094 7.9845938 11.621094 10.308594 L 11.621094 12.314453 L 9.2773438 12.314453 L 9.2773438 15.039062 L 11.621094 15.039062 L 11.621094 19 L 5 19 L 5 5 z"/></svg></a>
+            <a href="#instagram"><svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24" width="32px" height="32px">    <path d="M 8 3 C 5.243 3 3 5.243 3 8 L 3 16 C 3 18.757 5.243 21 8 21 L 16 21 C 18.757 21 21 18.757 21 16 L 21 8 C 21 5.243 18.757 3 16 3 L 8 3 z M 8 5 L 16 5 C 17.654 5 19 6.346 19 8 L 19 16 C 19 17.654 17.654 19 16 19 L 8 19 C 6.346 19 5 17.654 5 16 L 5 8 C 5 6.346 6.346 5 8 5 z M 17 6 C 16.448 6 16 6.448 16 7 C 16 7.552 16.448 8 17 8 C 17.552 8 18 7.552 18 7 C 18 6.448 17.552 6 17 6 z M 12 7 C 9.794 7 8 8.794 8 11 C 8 13.206 9.794 15 12 15 C 14.206 15 16 13.206 16 11 C 16 8.794 14.206 7 12 7 z M 12 9 C 13.103 9 14 9.897 14 11 C 14 12.103 13.103 13 12 13 C 10.897 13 10 12.103 10 11 C 10 9.897 10.897 9 12 9 z"/></svg></a>
+            <a href="#linkedin"><svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24" width="32px" height="32px">    <path d="M 5 3 C 3.897 3 3 3.897 3 5 L 3 19 C 3 20.103 3.897 21 5 21 L 19 21 C 20.103 21 21 20.103 21 19 L 21 5 C 21 3.897 20.103 3 19 3 L 5 3 z M 7 7 C 7.552 7 8 7.448 8 8 C 8 8.552 7.552 9 7 9 C 6.448 9 6 8.552 6 8 C 6 7.448 6.448 7 7 7 z M 6 10 L 8 10 L 8 17 L 6 17 L 6 10 z M 10 10 L 12 10 L 12 10.845703 C 12.545 10.304703 13.368 10 14.205078 10 C 16.111078 10 16 11.224 16 12.826172 L 16 17 L 14 17 L 14 13 C 14 12 14 11 13 11 C 12 11 12 12 12 13 L 12 17 L 10 17 L 10 10 z"/></svg></a>
+        </div>
+    </footer>
+</body>
+</html>
